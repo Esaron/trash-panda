@@ -35,8 +35,8 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/intro-bg.jpg) no-repeat center center;
-    background-size: cover;
+    background: url(../img/trash-panda.jpg) no-repeat center center;
+    background-color: lightblue;
 }
 
 .intro-message {
