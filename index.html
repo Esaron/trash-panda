@@ -27,6 +27,15 @@
   <!-- Bootstrap Core JavaScript -->
   <script src="js/bootstrap.min.js"></script>
 
+  <link type="text/css" rel="stylesheet" href="vendor/galleria/themes/classic/galleria.classic.css">
+  <script src="vendor/galleria/galleria-1.5.7.js"></script>
+
+  <style type="text/css">
+    .galleria {
+      height: 480px;
+    }
+  </style>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -296,8 +305,8 @@
             Trash pandas sure are cute!
           </p>
         </div>
-        <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-          <blockquote class="imgur-embed-pub" lang="en" data-id="a/hTV4twf" data-context="false"><a href="//imgur.com/a/hTV4twf">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+        <div class="col-lg-5 col-sm-pull-6  col-sm-6 galleria">
+          &nbsp;
         </div>
       </div>
     </div>
@@ -354,5 +363,33 @@
       </div>
     </div>
   </footer>
+  <script>
+    (function() {
+      $.ajax({
+        beforeSend: function(xhrObj) {
+          xhrObj.setRequestHeader("Authorization", "Client-ID e75f3469f1c6494");
+        },
+        type: "GET",
+        url: "https://api.imgur.com/3/album/hTV4twf/images",
+        processData: false,
+        dataType: 'json',
+        success: function(data, textStatus, jqXHR) {
+          $.each(data.data, function(key, value) {
+            //console.log('<img src="' + value.link + '"/>')
+            $('.galleria').append('<img src="' + value.link + '"/>')
+          })
+        },
+        complete: function(jqXHR, textStatus) {
+          //console.log("galleria.run");
+          Galleria.loadTheme('vendor/galleria/themes/classic/galleria.classic.js');
+          Galleria.configure({
+            wait: true,
+            autoplay: 7000,
+          });
+          Galleria.run('.galleria');
+        }
+      });
+    }());
+  </script>
 </body>
 </html>
