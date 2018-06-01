@@ -136,6 +136,13 @@ h6 {
     margin-bottom: 0;
 }
 
+.banner > .donut {
+    width: 100px;
+    position: relative;
+    left: 800px;
+    bottom: 100px;
+}
+
 .banner-social-buttons {
     float: right;
     margin-top: 0;
